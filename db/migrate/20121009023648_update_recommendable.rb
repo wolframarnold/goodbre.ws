@@ -42,7 +42,7 @@ class UpdateRecommendable < ActiveRecord::Migration
     # drop_table :recommendable_likes
     # drop_table :recommendable_dislikes
     # drop_table :recommendable_ignores
-    # drop_Table :recommendable_stashes
+    # drop_table :recommendable_stashes
   end
 
   def down
