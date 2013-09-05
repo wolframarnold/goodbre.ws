@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512213125) do
+ActiveRecord::Schema.define(:version => 20130905215115) do
 
   create_table "beers", :force => true do |t|
     t.string   "name"
@@ -162,6 +162,16 @@ ActiveRecord::Schema.define(:version => 20130512213125) do
 
   add_index "locations", ["brewery_id"], :name => "index_locations_on_brewery_id"
   add_index "locations", ["brewerydb_id"], :name => "index_locations_on_brewerydb_id", :unique => true
+
+  create_table "notes", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "beer_id",    :null => false
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "notes", ["user_id", "beer_id"], :name => "index_notes_on_user_id_and_beer_id", :unique => true
 
   create_table "social_media_accounts", :force => true do |t|
     t.string   "website"

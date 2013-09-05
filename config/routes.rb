@@ -42,6 +42,8 @@ Goodbrews::Application.routes.draw do
       post   :bookmark
       delete :bookmark, :action => :unbookmark, :as => :unbookmark
     end
+
+    resource :note, only: [:edit, :create, :update]
   end
 
   %w[beer brewery].each do |model|

@@ -32,6 +32,12 @@ setEventsForPjax = ->
     $(this).data('modal').$element.removeData();
   )
 
+  # Not working for some reason -- hookup is getting lost somewhere?
+  $('#note-modal form').on('ajax:success', ->
+    console.log 'ajax success'
+    $('#note-modal').modal('hide')
+  );
+
   $('.beer-actions button').tooltip
     html: false
     delay:
@@ -49,7 +55,7 @@ setEventsForPjax = ->
         $('#note-modal').modal
           backdrop: 'static'
           keyboard: true
-          remote:   "/beers/#{id}/note"
+          remote:   "/beers/#{id}/note/edit"
       when 'like'
         $.ajax("/beers/#{id}/like",
           type: 'POST'

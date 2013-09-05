@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   after_create { send_welcome_email }
 
+  has_many :notes, dependent: :destroy
+
   validates_length_of :password, :minimum => 6, :on => :create
 
   validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest ), :message => 'is reserved'
